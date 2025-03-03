@@ -8,12 +8,12 @@ public class DieRoller {
         Random gen = new Random();
 
         // Variable declaration
-        char playAgain = 'y';
+        String playAgain;
         int count, die1, die2, die3, sum;
-        boolean triple, input;
+        boolean triple;
 
-        // While loop
-        while (playAgain == 'y' || playAgain == 'Y') {
+        // Main loop
+        do {
             // Print the header section
             System.out.println("------------------------------------");
             System.out.println("Roll    Die1    Die2    Die3    Sum");
@@ -44,23 +44,18 @@ public class DieRoller {
                 }
             }
 
-            // Input validation
-            input = false;
-
             // Ask to play again
-            while (!input) {
+            do {
                 System.out.println("------------------------------------");
                 System.out.print("Do you want to play again? (y/n): ");
-                playAgain = in.next().charAt(0);
+                playAgain = in.nextLine();
 
-                // Validate the user input
-                if (playAgain == 'y' || playAgain == 'Y' || playAgain == 'n' || playAgain == 'N') {
-                    input = true;
-                } else {
-                    System.out.println();
-                    System.out.println("Invalid input, please enter 'y' or 'n'.");
+                // Check to validate input
+                if (!playAgain.equalsIgnoreCase("y") && !playAgain.equalsIgnoreCase("n")) {
+                    System.out.println("Invalid choice, please enter 'y' or 'n'.");
                 }
-            }
-        }
+            } while (!playAgain.equalsIgnoreCase("y") && !playAgain.equalsIgnoreCase("n"));
+
+        } while (playAgain.equalsIgnoreCase("y"));
     }
 }
